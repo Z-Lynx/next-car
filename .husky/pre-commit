@@ -2,7 +2,22 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo '🏗️👷 Styling, testing and building your project before committing'
-npm run prettier --check .
-npm run eslint . --ext ts --ext tsx
-npm run tsc --pretty --noEmit
-npm run build
+npm run format || (
+    echo 'Formatting failed, please fix formatting errors before committing'
+    false;
+)
+
+npm run check-lint || (
+    echo 'Linting failed, please fix linting errors before committing'
+    false;
+)
+
+npm run check-types || (
+    echo 'Type checking failed, please fix type errors before committing'
+    false;
+)
+
+npm run build || (
+    echo 'Build failed, please fix build errors before committing'
+    false;
+)

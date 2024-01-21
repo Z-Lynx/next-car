@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "check-lint": "eslint . --ext ts --ext tsx",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "next": "14.1.0",
