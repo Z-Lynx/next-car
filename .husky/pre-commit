@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing and building your project before committing'
+npm run prettier --check .
+npm run eslint . --ext ts --ext tsx
+npm run tsc --pretty --noEmit
+npm run build
